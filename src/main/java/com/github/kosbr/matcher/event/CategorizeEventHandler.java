@@ -19,7 +19,7 @@ public class CategorizeEventHandler {
 
     public void handle(CategorizeEvent categorizeEvent) {
         LOG.info("Handle event " + categorizeEvent);
-        CategorizeResultEvent resultEvent = matcher.handle(categorizeEvent);
+        CategorizeResultEvent resultEvent = matcher.match(categorizeEvent);
         LOG.info("Handled event " + resultEvent);
         externalEventRepository.sendResultEvent(resultEvent);
     }

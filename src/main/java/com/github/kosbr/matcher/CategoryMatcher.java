@@ -23,8 +23,9 @@ public class CategoryMatcher {
         this.redisTemplate = redisTemplate;
     }
 
-    public CategorizeResultEvent handle(CategorizeEvent categorizeEvent) {
-        String text = redisTemplate.opsForValue().get(categorizeEvent.getId());
+    public CategorizeResultEvent match(CategorizeEvent categorizeEvent) {
+        LOG.info("Event received " + categorizeEvent);
+        String text = redisTemplate.opsForValue().get(categorizeEvent.getId().toString());
         LOG.info(text);
         LOG.info(applicationProps.getCategories().get(0).toString());
         CategorizeResultEvent resultEvent = new CategorizeResultEvent();
