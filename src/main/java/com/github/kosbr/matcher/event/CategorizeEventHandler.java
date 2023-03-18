@@ -1,6 +1,6 @@
 package com.github.kosbr.matcher.event;
 
-import com.github.kosbr.matcher.CategoryMatcher;
+import com.github.kosbr.matcher.CategoryMatcherHelper;
 import com.github.kosbr.matcher.repository.ExternalEventRepository;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -13,7 +13,7 @@ public class CategorizeEventHandler {
 
     private final static Logger LOG = LoggerFactory.getLogger(CategorizeEventHandler.class);
 
-    private final CategoryMatcher matcher;
+    private final CategoryMatcherHelper matcher;
 
     private final ExternalEventRepository externalEventRepository;
 
