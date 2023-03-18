@@ -1,0 +1,49 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        matcherChannel:
+          consumer:
+            concurrency: 2
+            maxAttempts: 3
+          group: matcher-queue
+          destination: matcher-exchange
+      rabbit:
+        bindings:
+          matcherChannel:
+            consumer:
+              exchangeType: topic
+              autoBindDlq: true
+              deadLetterQueueName: matcher-queue.dlq
+              dlqDeadLetterExchange: matcher-dlq-exchange
+              republishToDlq: true
+              dlqTtl: 600000
+      function:
+        definition: matcherChannelStreamFunction;
+        bindings:
+          matcherChannelStreamFunction-in-0: matcherChannel
+
+application:
+  categories:
+    - name: "Star wars"
+      keys:
+        - "star war"
+        - "starwars"
+        - "starwar"
+        - "starwars"
+        - "r2d2"
+        - "maythe force be with you"
+    - name: "useful knowledge"
+      keys:
+        - "useful knowledge"
+    - name: "Basketball"
+      keys:
+        - "basketball"
+        - "nba"
+        - "ncaa"
+        - "lebron james"
+        - "john stokton"
+        - "anthony davis"
+        -
+configuration:
+  result-exchange: result-exchange
