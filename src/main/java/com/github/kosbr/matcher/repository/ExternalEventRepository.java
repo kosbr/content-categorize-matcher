@@ -18,6 +18,10 @@ public class ExternalEventRepository {
         this.streamBridge = streamBridge;
     }
 
+    /**
+     * Send event with final results to the queue.
+     * @param event
+     */
     public void sendResultEvent(CategorizeResultEvent event) {
         streamBridge.send(resultExchange, MessageBuilder.withPayload(event).build());
     }

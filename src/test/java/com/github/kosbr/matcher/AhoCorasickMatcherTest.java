@@ -43,7 +43,7 @@ public class AhoCorasickMatcherTest {
     }
 
     @Test
-    @Disabled("This is can be considered as a bug")
+    @Disabled("This can be considered as a bug")
     public void testTwoCategoriesSuccessSearch() {
         AhoCorasickMatcher matcher = new AhoCorasickMatcher(List.of(
                 new Category() {{

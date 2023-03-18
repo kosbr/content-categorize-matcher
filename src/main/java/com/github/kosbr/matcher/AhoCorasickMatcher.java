@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 import org.ahocorasick.trie.PayloadEmit;
 import org.ahocorasick.trie.PayloadTrie;
 
+/**
+ * https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm
+ * Aho-Corasick algorithm
+ */
 public class AhoCorasickMatcher {
 
     private PayloadTrie<String> trie;
@@ -27,6 +31,11 @@ public class AhoCorasickMatcher {
         trie = trieBuilder.build();
     }
 
+    /**
+     * Returns the list of matching category names.
+     * @param text
+     * @return
+     */
     public Set<String> findMatchingCategoryNames(String text) {
         Collection<PayloadEmit<String>> emits = trie.parseText(text);
         return emits.stream()
